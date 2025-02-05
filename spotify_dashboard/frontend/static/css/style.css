@@ -1,0 +1,210 @@
+/* Variables */
+:root {
+    --spotify-green: #1DB954;
+    --spotify-black: #191414;
+    --spotify-dark: #282828;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B3B3B3;
+}
+
+/* Style général */
+body {
+    background-color: var(--spotify-black);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--spotify-dark);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand {
+    color: var(--spotify-green) !important;
+    font-weight: bold;
+}
+
+/* Cards */
+.card {
+    background-color: var(--spotify-dark);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-title {
+    color: var(--text-primary);
+}
+
+/* Sélecteurs */
+.form-select {
+    background-color: var(--spotify-dark);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-select:focus {
+    background-color: var(--spotify-dark);
+    color: var(--text-primary);
+    border-color: var(--spotify-green);
+    box-shadow: 0 0 0 0.2rem rgba(29, 185, 84, 0.25);
+}
+
+.form-select option {
+    background-color: var(--spotify-dark);
+    color: var(--text-primary);
+}
+
+/* Track items */
+.track-image {
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.track-name {
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.artist-name {
+    color: var(--text-secondary);
+}
+
+/* Search section */
+#searchInput {
+    background-color: var(--spotify-dark);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#searchInput:focus {
+    background-color: var(--spotify-dark);
+    color: var(--text-primary);
+    border-color: var(--spotify-green);
+    box-shadow: 0 0 0 0.2rem rgba(29, 185, 84, 0.25);
+}
+
+#searchButton {
+    background-color: var(--spotify-green);
+    border-color: var(--spotify-green);
+}
+
+#searchButton:hover {
+    background-color: #1ed760;
+    border-color: #1ed760;
+}
+
+.search-result {
+    transition: transform 0.2s ease;
+}
+
+.search-result:hover {
+    transform: translateX(10px);
+    cursor: pointer;
+}
+
+/* Badges */
+.badge {
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.popularity-badge {
+    background-color: rgba(29, 185, 84, 0.2);
+    color: var(--spotify-green);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.track-row {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 10px;
+    }
+    
+    .card {
+        margin-bottom: 15px;
+    }
+    
+    .track-image {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Chart.js customization */
+canvas {
+    width: 100% !important;
+    height: 300px !important;
+}
+
+/* Loading states */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin: -12px 0 0 -12px;
+    border: 2px solid var(--spotify-green);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Stats cards */
+.stat-card {
+    background-color: rgba(29, 185, 84, 0.1);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--spotify-green);
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}

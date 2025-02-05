@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Charts Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Notre CSS personnalisé -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">🎵 Spotify Charts Dashboard</a>
+        </div>
+    </nav>
+
+    <!-- Section de recherche -->
+    <div class="container-fluid mb-4">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Rechercher une chanson</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input type="text" id="searchInput" class="form-control" 
+                                   placeholder="Rechercher par titre ou artiste...">
+                            <button class="btn btn-primary" type="button" id="searchButton">
+                                🔍 Rechercher
+                            </button>
+                        </div>
+                        <div id="searchResults" class="mt-3">
+                            <!-- Les résultats de recherche seront affichés ici -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="container-fluid">
+        <!-- Filtres -->
+        <div class="row mb-4">
+            <div class="col-md-6 col-lg-3 mb-3">
+                <select id="continentSelect" class="form-select">
+                    <option value="">Choisissez un continent</option>
+                </select>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-3">
+                <select id="countrySelect" class="form-select" disabled>
+                    <option value="">Choisissez d'abord un continent</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Graphiques et données -->
+        <div class="row">
+            <!-- Top 10 des morceaux -->
+            <div class="col-lg-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Top 10 des morceaux</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="topTracks" class="table-responsive">
+                            <!-- Les données seront injectées ici -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Évolution de la popularité -->
+            <div class="col-lg-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Évolution de la popularité</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="popularityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistiques -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Statistiques globales</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="statsContainer" class="row">
+                            <!-- Les statistiques seront injectées ici -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Templates pour le contenu dynamique -->
+    <template id="trackRowTemplate">
+        <div class="d-flex align-items-center mb-3 p-2 bg-dark rounded">
+            <img class="track-image me-3" width="60" height="60">
+            <div class="flex-grow-1">
+                <h6 class="track-name mb-0"></h6>
+                <small class="text-muted artist-name"></small>
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                    <span class="badge bg-success streams"></span>
+                    <div class="popularity-badge"></div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Bootstrap Bundle avec Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Notre JavaScript personnalisé -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
